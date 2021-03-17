@@ -12,13 +12,15 @@ const App = () => {
 
    const addItem = (e) => {
       e.preventDefault();
-      inputItem!=="" && setItemList([...itemList, inputItem]);
+      const spaceRemoved = inputItem.replace(/\s/g, "").length;
+      if(spaceRemoved > 0)
+         inputItem!=="" && setItemList([...itemList, inputItem]);
       setInputItem("");
    }
 
    const onDelete = (i) => {
       // eslint-disable-next-line
-      setItemList(itemList.filter((item, Index) => {if(Index !== i) return item}));
+      setItemList(itemList.filter((item, Index) => {if(Index !== i) return item }));
    }
 
    return (
